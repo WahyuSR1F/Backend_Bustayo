@@ -1,6 +1,9 @@
 import { body } from 'express-validator';
 
 export const loginValidation = [
-    body('username').notEmpty().withMessage('Username wajib diisi'),
-    body('password').isLength({ min: 6 }).withMessage('Password minimal 6 karakter')
+    body('email')
+        .isEmail().withMessage('Email tidak valid')
+        .normalizeEmail(),
+    body('password')
+        .isLength({ min: 6 }).withMessage('Password minimal 6 karakter')
 ];
