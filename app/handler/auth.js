@@ -13,7 +13,7 @@ const login = async (req, res) => {
     try {
         const user = await User.findByEmail(email);
         if (!user) {
-            return response(400, [], 'email atau password salah', res);
+            return response(400, [], 'email atau password salah sad', res);
         }
         const match = await bcrypt.compare(password, user.password);
         if (!match) {
@@ -25,8 +25,16 @@ const login = async (req, res) => {
     }
 
 }
-const register = (req, res) => {
-    response(200, [], "data sudah teregristrasi", res);
+
+const register = async (req, res) => {
+    try {
+        const { name, email, password, number } = req.body;
+        const hashed = await bcrypt.hash(password, 10);
+        const result = await User.create(name, email, hashed, number);
+        response(200, result, "data sudah teregristrasi silahkan login", res);
+    } catch (err) {
+        response(500, [], err.message, res);
+    }
 }
 
 
