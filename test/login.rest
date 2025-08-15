@@ -1,0 +1,5 @@
+@baseUrl = https://3000-firebase-backendbustayo-1755188762930.cluster-a6zx3cwnb5hnuwbgyxmofxpkfe.cloudworkstations.dev
+
+### 1️⃣ Home - Cek server jalan
+GET {{baseUrl}}/
+Accept: application/json
