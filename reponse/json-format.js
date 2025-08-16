@@ -5,11 +5,6 @@ const response = (statusCode, data, message, res) => {
             datas: data
         },
         message: message,
-        pagination: {
-            prev: "",
-            next: "",
-            max: ""
-        }
     })
 }
 
